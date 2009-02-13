@@ -34,6 +34,11 @@
 		}
 	};
 	
+	/**
+	 * typewriter animation function
+	 * @param elem
+	 * @param parms
+	 */
 	function typewriter(elem, params) {
 	
 		var opts = {
@@ -66,6 +71,65 @@
 			 );
 		}
 		
+	}
+	
+	/**
+	 * decode animation function, animations for the duration param, then reveals corrects chars based on delay param
+	 * Therefor total time = duration + (opts.text.length * delay);
+	 * @param elem
+	 * @param parms
+	 */
+	function decode(elem, params){
+		
+		var opts = {
+				delay: 150,
+				duration: 3000,
+				text: ''
+		};
+		
+		$.extend(opts, params);
+		
+		var tlen = opts.text.length; //text length
+		var srand = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890!@£$%^&*¡€#¢'; //chars for rand
+		var slen = srand.length; //total length of rand
+		var rand = 0; //rand location
+		var walk = 1; //walk var, indicates current valid placement
+		var total = (opts.delay * tlen) + opts.duration; //total duration of animation
+		var out = ''; //output string
+		var tout = opts.delay;
+		console.log("%s",total);
+		for(i=opts.delay; i<=total; i=i+opts.delay){
+				//display just random text for the duration
+				for(j=0; j < tlen; j++){
+					rand = Math.floor(Math.random()*slen); //rand offset
+					out = out + srand.charAt(rand); //rand char
+				}
+				j=0;
+				setTimeout(
+						function(){
+									out = ''
+									j=j+opts.delay;
+									if(j <= opts.duration){
+										for(k=0; k < tlen; k++){
+											rand = Math.floor(Math.random()*slen); //rand offset
+											out = out + srand.charAt(rand); //rand char
+										}
+									} else {
+										//reveal valid
+										for(k=0; k<walk; k++){
+											out = out + opts.text.charAt(k);
+										}
+										//gen rand
+										for(l=walk; k<tlen; k++){
+											rand = Math.floor(Math.random()*slen);
+											out = out + srand.charAt(rand);
+										}
+										walk++;
+									}
+									elem.html(out);
+						},
+						i);
+		}
 	}
 	
 	/**
