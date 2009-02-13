@@ -145,8 +145,8 @@
 		return this;
 	};
 	
-	$.fn.decoder = function(params) {
-		decoder(this, params);
+	$.fn.decode = function(params) {
+		decode(this, params);
 		return this;
 	};
 	
