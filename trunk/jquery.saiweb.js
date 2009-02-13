@@ -145,4 +145,9 @@
 		return this;
 	};
 	
+	$.fn.decoder = function(params) {
+		decoder(this, params);
+		return this;
+	};
+	
 })(jQuery);
