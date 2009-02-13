@@ -90,7 +90,7 @@
 		$.extend(opts, params);
 		
 		var tlen = opts.text.length; //text length
-		var srand = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890!@£$%^&*¡€#¢'; //chars for rand
+		var srand = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890!@£$%^&*#'; //chars for rand
 		var slen = srand.length; //total length of rand
 		var rand = 0; //rand location
 		var walk = 1; //walk var, indicates current valid placement
