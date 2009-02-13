@@ -97,7 +97,6 @@
 		var total = (opts.delay * tlen) + opts.duration; //total duration of animation
 		var out = ''; //output string
 		var tout = opts.delay;
-		console.log("%s",total);
 		for(i=opts.delay; i<=total; i=i+opts.delay){
 				//display just random text for the duration
 				for(j=0; j < tlen; j++){
