@@ -174,7 +174,6 @@
 				if(i == alim){
 					//reveal loop
 					setTimeout(function(){
-						console.log('reveal');
 						tout += opts.text.charAt(walk);
 						elem.html(tout);
 						elem.html(tout)
@@ -185,7 +184,6 @@
 				} else if (i < alim) {
 					//anim loop
 					setTimeout(function(){
-						console.log('anim');
 						rand = Math.floor(Math.random()*slen);
 						tmp = tout + srand.charAt(rand);
 						elem.html(tmp);
