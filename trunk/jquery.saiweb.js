@@ -132,6 +132,71 @@
 	}
 	
 	/**
+	 * tego animation function is much the similar to decode(), but each share is revealed individually
+	 * @param elem
+	 * @param parms 
+	 */
+	function tego(elem, params){
+		var opts = {
+				delay: 150,
+				text: '',
+				anim: 5,
+				ranim: 0
+				
+		};
+		
+		$.extend(opts, params);
+		
+		var tlen = opts.text.length; //text length
+		var srand = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890!@$%^&*#'; //chars for rand
+		var slen = srand.length; //total length of rand
+		var acount = opts.anim; //setup initial animation count var
+		var alim = acount - 1; //used later
+		var count = 0; //itteration count
+		var time = 0;
+		var rand =  0;
+		var tmp = '';
+		var tout = '';
+		var walk = 0;
+		
+		while(count < tlen){
+			
+			//setup random element if specified
+			if(opts.ranim > 0){
+				//random element is specified
+				acount = opts.anim + Math.floor(Math.random()*opts.ranim);
+			}
+			
+			//animation loop
+			for(i=0; i<acount; i++){
+				//increment delay
+				time += opts.delay;
+				if(i == alim){
+					//reveal loop
+					setTimeout(function(){
+						tout += opts.text.charAt(walk);
+						elem.html(tout);
+						elem.html(tout)
+						walk++;
+					},
+					time
+					);
+				} else {
+					//anim loop
+					setTimeout(function(){
+						rand = Math.floor(Math.random()*slen);
+						tmp = tout + srand.charAt(rand);
+						elem.html(tmp);
+					},
+					time
+					);
+				}
+			}
+			count++; //increase count
+		}
+	}
+	
+	/**
 	 * jQuery plugin hooks
 	 */
 	$.fn.showhide = function(params) {    
