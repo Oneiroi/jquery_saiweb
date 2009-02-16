@@ -214,4 +214,9 @@
 		return this;
 	};
 	
+	$.fn.tego = function(params) {
+		tego(this, params);
+		return this;
+	};
+	
 })(jQuery);
